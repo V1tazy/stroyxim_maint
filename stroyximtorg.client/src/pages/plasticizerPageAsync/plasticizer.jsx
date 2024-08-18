@@ -1,20 +1,20 @@
 import React, { Suspense, useState } from 'react'
 import LoadingPage from '../LoadingPage/LoadingPage'
-import './productsPage.scss'
-
-function ProductsPage() {
+import '../supplementsPageAsync/supplementsPage.scss'
+import { startTransition } from 'react';
+function SupplementsPage() {
 	const [isButtonClicked, setsButtonClicked] = useState(false)
 
 	const handleToggle = () => setsButtonClicked(prev => !prev)
 
 	return (
-		<Suspense fallback={<LoadingPage />}>
-			<div className='productsPage__wrapper'>
-				<p className='productsPage__wrapper--label'>Каталог товаров</p>
-				<ul className='container productsPage__wrapper--menu'>
-					<li className='productsPage__wrapper--item'>
+
+			<div className='SupplementsPage__wrapper'>
+				<p className='SupplementsPage__wrapper--label'>Пластификаторы</p>
+				<ul className='SupplementsPage__wrapper--menu'>
+					<li className='SupplementsPage__wrapper--item'>
 						<button
-							className='productsPage__wrapper--button'
+							className='SupplementsPage__wrapper--button'
 							onClick={handleToggle}
 						>
 							Узнать больше
@@ -22,7 +22,7 @@ function ProductsPage() {
 					</li>
 				</ul>
 				{isButtonClicked && (
-					<div className='testttt'>
+					<div className='Supplements__page--wrapper'>
 						<div className='product__overlay'>
 							<button
 								className='close__button'
@@ -71,4 +71,4 @@ function ProductsPage() {
 	)
 }
 
-export default ProductsPage
+export default SupplementsPage

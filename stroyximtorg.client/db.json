@@ -1,0 +1,17 @@
+{
+    "categories": [
+      { "id": 1, "name": "Противоморозные добавки", "image": null },
+      { "id": 2, "name": "Пластификаторы", "image": null }
+    ],
+    "products": [
+      [
+        { "id": 1, "name": "CALTER K30", "container": "Еврокуб/канистра", "massa": "1200", "description": null, "price": "41/48", "image": null, "type": null, "typeId": null },
+        { "id": 2, "name": "CALTER K30, сух.", "container": "Мешок", "massa": "30", "description": null, "price": "117", "image": null, "type": null, "typeId": null }
+
+      ],
+      [
+        { "id": 10, "name": "Пластификатор “SOLITARD S3”", "container": "Еврокуб/канистра", "massa": "1180", "description": null, "price": "53/78,5", "image": null, "type": null, "typeId": null }
+
+      ]
+    ]
+  }

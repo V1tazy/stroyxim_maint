@@ -1,9 +1,10 @@
 @import '../../style/variables.scss';
 .main {
+		min-height: 800px;
 	&__about {
 		background-color: #eaeaea;
 		position: relative;
-		height: 100vh;
+		min-height: 800px;
 		min-width: 320px;
 		&--wrapper {
 			position: relative;
@@ -125,5 +126,6 @@
 	}
 }
 .text--container {
+    padding-top: 80px;
 	min-height: 100%;
 }

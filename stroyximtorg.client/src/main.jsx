@@ -9,7 +9,8 @@ import Layout from './Layout/Layout.jsx'
 import ErrorPage from './pages/ErrorPage/ErrorPage.jsx'
 import HomePageAsync from './pages/HomePage/HomePageAsync.jsx'
 import LoadingPage from './pages/LoadingPage/LoadingPage.jsx'
-import ProductsPageAsync from './pages/ProductsPage/ProductsPage.jsx'
+import SupplementsPageAsync from './pages/supplementsPageAsync/SupplementsPageAsync.jsx'
+import PlasticizerPageAsync from './pages/plasticizerPageAsync/plasticizerPageAsync.jsx'
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -20,8 +21,12 @@ const router = createBrowserRouter([
 				element: <HomePageAsync />,
 			},
 			{
-				path: '/products',
-				element: <ProductsPageAsync />,
+				path: '/supplements',
+				element: <SupplementsPageAsync />,
+			},
+			{
+				path: '/plasticizer',
+				element: <PlasticizerPageAsync />,
 			},
 			{
 				path: '*',

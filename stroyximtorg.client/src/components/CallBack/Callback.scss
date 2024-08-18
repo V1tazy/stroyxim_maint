@@ -14,7 +14,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: 100vh;
+		min-height: 100vh;
 		margin: 0 auto;
 		background: url('/callback__bg.png');
 		object-fit: cover;
@@ -26,6 +26,7 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
+            padding: 55px;
 		}
 		&--wrapper--label {
 			font-weight: 800;
@@ -47,6 +48,7 @@
 	flex-direction: column;
 	justify-content: center;
 	width: 100%;
+
 	align-items: center;
 	max-width: 700px;
 }
@@ -69,7 +71,7 @@ fieldset {
 	border-radius: 20px;
 	background: #f6f5f5;
 	margin: 0 auto;
-	color: $text-color-primary;
+	color: black;
 	padding: 20px;
 }
 
@@ -96,18 +98,16 @@ fieldset {
 	color: #ffffff;
 	padding: 10px;
 	font-size: 15px;
-
 	border-radius: 20px;
 	max-width: 346px;
 	max-height: 59px;
-	font-weight: 500;
 	font-size: 24px;
 	line-height: 121%;
 	text-align: center;
 	color: #efeded;
+    font-weight: 800;
 	@media (min-width: $tablet-width) {
 		width: 100%;
-		font-weight: 800;
 	}
 }
 
