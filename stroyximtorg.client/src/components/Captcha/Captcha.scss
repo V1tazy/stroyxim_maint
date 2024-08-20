@@ -1,0 +1,28 @@
+@import '../../style/variables.scss';
+.submit__button{
+	cursor: pointer;
+	border: none;
+	background-color: $warning-color;
+	color: #ffffff;
+	padding: 10px;
+	font-size: 15px;
+	border-radius: 20px;
+	max-width: 346px;
+	max-height: 59px;
+	font-size: 24px;
+	line-height: 121%;
+	text-align: center;
+
+    font-weight: 800;
+	@media (min-width: $tablet-width) {
+		width: 100%;
+	}
+    &:hover {
+        @media (hover: hover) {
+            background: $text-color-secondary;
+            color: $warning-color !important;
+            -webkit-transition: background 0.3s ease-in-out;
+            -moz-transition: background 0.3s ease-in-out;
+            transition: background-color 0.3s ease-in-out;
+        }}
+}
