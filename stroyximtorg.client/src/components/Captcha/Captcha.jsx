@@ -7,7 +7,7 @@ const InvisibleCaptcha = () => {
 
 	const handleChallengeHidden = useCallback(() => setVisible(false), [])
 
-	const handleButtonClick = () => setVisible(true)
+	const handleButtonClick = () => setVisible(false)
 
 	return (
 		<>

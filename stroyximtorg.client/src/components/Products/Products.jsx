@@ -59,7 +59,7 @@ function Products() {
 
                         <SwiperSlide className='custom__slide'>
                             <img
-                                src='/public/cement.png'
+                                src='/cement.png'
                                 alt='Противоморозные добавки'
                                 className='product__image'
                             />
@@ -70,7 +70,7 @@ function Products() {
                         </SwiperSlide>
                         <SwiperSlide className='custom__slide'>
                             <img
-                                src='/public/cement.png'
+                                src='/cement.png'
                                 alt='Пластификаторы'
                                 className='product__image'
                             />
@@ -79,7 +79,6 @@ function Products() {
                                 <button className='primary__button'>Узнать больше</button>
                             </Link>
                         </SwiperSlide>
-
             </Swiper>
         </section>
     )
