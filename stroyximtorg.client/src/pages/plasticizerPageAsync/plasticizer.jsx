@@ -1,24 +1,34 @@
 import React, { useRef, useEffect, useState } from 'react';
-import LoadingPage from '../LoadingPage/LoadingPage';
 import '../supplementsPageAsync/supplementsPage.scss';
-import '../supplementsPageAsync/supplementsPage.scss'
+import ContactForm from '../../components/ContactForm/ContactForm';
 
 const SupplementsPage = () => {
   const [isButtonClicked, setIsButtonClicked] = useState(false);
+  const [isFormVisible, setIsFormVisible] = useState(false);
   const modalRef = useRef(null);
+  const contactFormRef = useRef(null);
 
   const handleToggle = () => {
     setIsButtonClicked(!isButtonClicked);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        setIsButtonClicked(false);
-      }
-    };
+  const handleOrderNowClick = () => {
+    setIsButtonClicked(false); // Close the modal
+    setIsFormVisible(true); // Open the contact form
+  };
 
-    if (isButtonClicked) {
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      setIsButtonClicked(false);
+    }
+
+    if (contactFormRef.current && !contactFormRef.current.contains(event.target)) {
+      setIsFormVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isButtonClicked || isFormVisible) {
       document.addEventListener('mousedown', handleClickOutside);
       document.body.style.overflow = 'hidden';
     } else {
@@ -30,7 +40,7 @@ const SupplementsPage = () => {
       document.body.style.overflow = '';
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isButtonClicked]);
+  }, [isButtonClicked, isFormVisible]);
 
   return (
     <div className='SupplementsPage__wrapper'>
@@ -38,6 +48,7 @@ const SupplementsPage = () => {
       <ul className='SupplementsPage__wrapper--menu'>
         <li className='SupplementsPage__wrapper--item'>
           <img src='/testImg.png' className='product__image' />
+
           <button
             className='SupplementsPage__wrapper--button'
             onClick={handleToggle}
@@ -46,6 +57,7 @@ const SupplementsPage = () => {
           </button>
         </li>
       </ul>
+
       {isButtonClicked && (
         <div className='Supplements__page--wrapper'>
           <div className='product__overlay' ref={modalRef}>
@@ -66,7 +78,6 @@ const SupplementsPage = () => {
             </button>
             <div className='product__content--label'>Арматура</div>
             <div className='product__content--flex'>
-              {/* IMAGE */}
               <img className='test_image' src='/armatura.png' alt='' />
               <div className='product__content--description'>
                 <h1 className='product__content--text'>Рифленая:</h1>
@@ -81,9 +92,21 @@ const SupplementsPage = () => {
                 </p>
               </div>
             </div>
-            <button className='product__content--button'>
+
+            <button
+              className='product__content--button'
+              onClick={handleOrderNowClick}
+            >
               Заказать сейчас
             </button>
+          </div>
+        </div>
+      )}
+
+      {isFormVisible && (
+        <div className='ContactForm__wrapper'>
+          <div className='ContactForm__content' ref={contactFormRef}>
+            <ContactForm />
           </div>
         </div>
       )}

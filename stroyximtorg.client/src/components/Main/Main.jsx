@@ -1,7 +1,7 @@
 import React from "react";
 import "./Main.scss";
 import Ellipse from "/Ellipse.png";
-
+import { NavHashLink } from 'react-router-hash-link'
 function Main() {
   return (
     <section className="main" id="main">
@@ -17,7 +17,14 @@ function Main() {
             <br />
             строительных нужд
           </p>
+          <NavHashLink
+					to={{
+						pathname: '/',
+						hash: '#contact',
+					}}
+				>
           <button className="main__order--button">Заказать сейчас</button>
+          </NavHashLink>
         </div>
         <img id="item" className="main__elipse" src={Ellipse} alt="" />
       </div>

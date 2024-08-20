@@ -58,7 +58,7 @@
   transform: rotate(-45deg) translate(34px, 34px);
   background: $warning-color;
 }
-/* 
+/*
 
 */
 .overlay {
@@ -75,7 +75,6 @@
 
   &.show {
     opacity: 0.75;
-
     visibility: visible;
     z-index: -10;
   }

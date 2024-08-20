@@ -3,15 +3,12 @@
 
 html {
 	color: $text-color-primary;
-	/* 	scroll-snap-type: y mandatory; */
 	scroll-behavior: smooth;
 	scroll-padding-top: 100px;
 	scrollbar-color: $warning-color $text-color-secondary;
 	scrollbar-width: thin;
 }
-/* section {
-	scroll-snap-align: center;
-} */
+
 * {
 	font-family: 'Inter', sans-serif;
 	font-optical-sizing: auto;
