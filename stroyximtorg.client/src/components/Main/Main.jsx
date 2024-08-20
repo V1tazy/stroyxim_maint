@@ -20,7 +20,7 @@ function Main() {
           <NavHashLink
 					to={{
 						pathname: '/',
-						hash: '#contact',
+						hash: '#main__callback',
 					}}
 				>
           <button className="main__order--button">Заказать сейчас</button>

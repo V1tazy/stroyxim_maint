@@ -23,6 +23,8 @@
   }
   &__section {
     display: flex;
+    height: 100px;
+    cursor: pointer;
     justify-content: space-between;
     gap: 20px;
     align-items: center;

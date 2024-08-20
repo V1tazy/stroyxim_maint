@@ -40,7 +40,7 @@ function Callback() {
 	})
 
 	return (
-		<section className='main__callback'>
+		<section className='main__callback' id='main__callback'>
 			<div className='container main__callback--wrapper'>
 				<ContactForm/>
 			</div>

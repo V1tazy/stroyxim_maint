@@ -17,25 +17,23 @@ function Header() {
 			? header.classList.add('is-sticky')
 			: header.classList.remove('is-sticky')
 	}
+
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' })
+	}
+
 	return (
 		<section className='header' id='header'>
 			<ScrollRestoration />
 			<div className='container header__wrapper' id='mainNav'>
-				<NavHashLink
-					to={{
-						pathname: '/',
-						hash: '#',
-					}}
-				>
-					<div className='header__section'>
-						<div className='header__logo'></div>
-						<div className='header__label'>
-							<p className='header__label--warning'>Строй</p>
-							<p className='header__label'>Хим</p>
-							<p className='header__label--warning'>Торг</p>
-						</div>
+				<div className='header__section' onClick={scrollToTop}>
+					<div className='header__logo'></div>
+					<div className='header__label'>
+						<p className='header__label--warning'>Строй</p>
+						<p className='header__label'>Хим</p>
+						<p className='header__label--warning'>Торг</p>
 					</div>
-				</NavHashLink>
+				</div>
 				<nav className='header__nav nav-bar'>
 					<ul className='nav-list'>
 						<li className='nav-list-item'>
