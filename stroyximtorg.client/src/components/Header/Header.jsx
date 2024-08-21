@@ -26,7 +26,13 @@ function Header() {
 		<section className='header' id='header'>
 			<ScrollRestoration />
 			<div className='container header__wrapper' id='mainNav'>
-				<div className='header__section' onClick={scrollToTop}>
+            <NavHashLink
+								to={{
+									pathname: '/',
+									hash: '#main',
+								}}
+							>
+	<div className='header__section' onClick={scrollToTop}>
 					<div className='header__logo'></div>
 					<div className='header__label'>
 						<p className='header__label--warning'>Строй</p>
@@ -34,6 +40,8 @@ function Header() {
 						<p className='header__label--warning'>Торг</p>
 					</div>
 				</div>
+							</NavHashLink>
+
 				<nav className='header__nav nav-bar'>
 					<ul className='nav-list'>
 						<li className='nav-list-item'>
