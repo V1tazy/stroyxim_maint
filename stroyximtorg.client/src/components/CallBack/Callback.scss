@@ -27,7 +27,7 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-            padding: 55px;
+
 		}
 		&--wrapper--label {
 			font-weight: 800;
@@ -188,16 +188,16 @@ fieldset {
     0% {
       opacity: 0;
       transform: scale(0.8);
-      filter: blur(10px); /* Start with a strong blur */
+      filter: blur(10px);
     }
     50% {
       opacity: 0.5;
-      transform: scale(1.05);
-      filter: blur(5px); /* Reduce blur at the midpoint */
+      transform: scale(1);
+      filter: blur(5px);
     }
     100% {
       opacity: 1;
       transform: scale(1);
-      filter: blur(0); /* End with no blur */
+      filter: blur(0);
     }
   }

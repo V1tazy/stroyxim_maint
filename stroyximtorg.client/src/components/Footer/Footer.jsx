@@ -6,9 +6,7 @@ function Footer() {
 		<section className='footer'>
 			<div className='container footer__wrapper'>
 				<NavHashLink href='/' className='footer__wrapper--logo'>
-					<p className='warning-color'>Строй</p>
-					<p>Хим</p>
-					<p className='warning-color'>Торг</p>
+                <img src='/logo.svg' alt='СтройХимТорг' className='footer__logo'/>
 				</NavHashLink>
 				<div className='footer__wrapper--contacts'>
 					<div>

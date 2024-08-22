@@ -33,12 +33,9 @@ function Header() {
 								}}
 							>
 	<div className='header__section' onClick={scrollToTop}>
-					<div className='header__logo'></div>
-					<div className='header__label'>
-						<p className='header__label--warning'>Строй</p>
-						<p className='header__label'>Хим</p>
-						<p className='header__label--warning'>Торг</p>
-					</div>
+
+                <img className='header__logo' src='/logo.svg'/>
+
 				</div>
 							</NavHashLink>
 

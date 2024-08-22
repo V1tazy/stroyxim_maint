@@ -11,17 +11,6 @@
     &__wrapper {
       background-color: $text-color-secondary;
 
-      &--logo {
-        display: flex;
-        justify-content: flex-start;
-        font-weight: 700;
-        font-size: 38px;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-        color: $text-color-primary;
-      }
-
       &--contacts {
         display: flex;
         flex-direction: row;
@@ -77,4 +66,8 @@
         &:hover {
           text-decoration: underline;
         }}
+}
+.footer__logo{
+    height: 100px;
+    margin-top: 15px;
 }
