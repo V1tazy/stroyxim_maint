@@ -42,6 +42,7 @@
 }
 
 #contact {
+    position: relative;
 	background-color: #919090;
 	padding: 25px;
 	border-radius: 20px;
@@ -162,3 +163,41 @@ fieldset {
 .SmartCaptcha-Shield {
 	z-index: 100;
 }
+.success-message {
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    gap: 16px;
+    border-radius: 20px;
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+
+    /* Add the animation */
+    animation: fadeInScaleBlur 0.8s ease-out forwards;
+  }
+
+  /* Define the keyframes for the fade-in, scale-up, and blur effect */
+  @keyframes fadeInScaleBlur {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+      filter: blur(10px); /* Start with a strong blur */
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.05);
+      filter: blur(5px); /* Reduce blur at the midpoint */
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0); /* End with no blur */
+    }
+  }

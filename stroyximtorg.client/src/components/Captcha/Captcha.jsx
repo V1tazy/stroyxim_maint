@@ -63,16 +63,6 @@ const InvisibleCaptcha = () => {
   return (
     <form>
       {/* Ваши другие поля формы */}
-      <button
-        onClick={handleButtonClick}
-        className='submit__button'
-        name='submit'
-        type='button' // Установите тип кнопки в 'button'
-        id='contact-submit'
-        data-submit='...Отправка'
-      >
-        Отправить
-      </button>
       <InvisibleSmartCaptcha
         className='InvisibleSmartCaptcha'
         sitekey='<ключ_клиента>' // Замените на ваш ключ клиента
