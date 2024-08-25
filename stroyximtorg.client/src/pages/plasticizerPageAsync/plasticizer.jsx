@@ -44,39 +44,38 @@ const SupplementsPage = () => {
     };
   }, [isButtonClicked, isFormVisible]);
 
-  const SERVER_URL = 'http://localhost:3000/products';
-  const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(SERVER_URL);
-        if (!response.ok) {
-          throw new Error(`Ошибка HTTP: ${response.status}`);
-        }
-        const data = await response.json();
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('https://localhost:7109/ProductCategory?categoryId=2');
+                if (!response.ok) {
+                    throw new Error(`Ошибка HTTP: ${response.status}`);
+                }
+                const data = await response.json();
 
-        if (Array.isArray(data)) {
-          setProducts(data);
-        } else {
-          console.error('Неправильный формат данных:', data);
-        }
-      } catch (error) {
-        console.error('Ошибка при загрузке данных:', error);
-      }
-    };
+                if (Array.isArray(data)) {
+                    setProducts(data);
+                } else {
+                    console.error('Неправильный формат данных:', data);
+                }
+            } catch (error) {
+                console.error('Ошибка при загрузке данных:', error);
+            }
+        };
 
-    fetchData();
-  }, []);
+        fetchData();
+    }, []);
 
   return (
     <div className='SupplementsPage__wrapper'>
-      <p className='SupplementsPage__wrapper--label'>Противоморозные добавки</p>
+      <p className='SupplementsPage__wrapper--label'>Пластификаторы</p>
       <ul className='SupplementsPage__wrapper--menu'>
         {products.length > 0 ? (
           products.flat().map(item => (
             <li className='SupplementsPage__wrapper--item' key={item.id}>
-              <img src='/testImg.png' className='product__image' alt={item.name} />
+              <img src={`/products/${item.image}`}  className='product__image' alt={item.name} />
               <p className='item--label'>{item.name}</p>
               <button
                 className='SupplementsPage__wrapper--button'
@@ -112,18 +111,18 @@ const SupplementsPage = () => {
             <div className='product__content--label'>{selectedProduct.name}</div> {/* Отображение поля container */}
             <div className='product__content--flex'>
 
-              <img className='test_image' src='/armatura.png' alt='' />
+              <img className='test_image' src={`/products/${selectedProduct.image}`} alt='' />
               <div className='product__content--description'>
                 <ul>
                     <li>  <p className='product__content--text-sub'>
                 Тип контейнера: {selectedProduct.container}
                 </p></li>
                     <li>         <p className='product__content--text-sub'>
-                Масса: {selectedProduct.container}
+                Масса: {selectedProduct.massa}
                 </p></li>
                     <li>
                 <p className='product__content--text-sub'>
-                Описание: {selectedProduct.container}
+                Описание: {selectedProduct.description}
                 </p></li>
                 <li>
                 <p className='product__content--text-sub'>

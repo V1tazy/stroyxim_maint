@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using StroyXimTorg.Server.DataBase;
 using StroyXimTorg.Server.Models;
 using StroyXimTorg.Server.Services.Interfaces;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace StroyXimTorg.Server.Controllers
 {
@@ -9,26 +11,29 @@ namespace StroyXimTorg.Server.Controllers
     {
         private readonly IApplicationService _applicationService;
         private readonly IBaseService _baseService;
-        
-        public MainController(IApplicationService applicationService, IBaseService baseService)
+        private readonly AppDbContext _dbContext;
+
+        public MainController(IApplicationService applicationService, IBaseService baseService, AppDbContext dbContext)
         {
             _applicationService = applicationService;
             _baseService = baseService;
+            _dbContext = dbContext;
         }
 
 
         [HttpPost("application")]
-        public async Task<IActionResult> CreateApplication([FromBody]ApplicationInput applicationInput)
+        public async Task<IActionResult> CreateApplication([FromBody] ApplicationInput applicationInput)
         {
+
             await _applicationService.SendApplicationToTelegramAsync(new()
             {
-                PhoneNumber = applicationInput.PhoneNumber,
+                PhoneNumber = applicationInput.Tel,
                 Name = applicationInput.Name
             });
 
             await _applicationService.SendApplicationToEmailAsync(new()
             {
-                PhoneNumber = applicationInput.PhoneNumber,
+                PhoneNumber = applicationInput.Tel,
                 Name = applicationInput.Name
             });
 
@@ -43,7 +48,7 @@ namespace StroyXimTorg.Server.Controllers
         }
 
         [HttpGet("Product")]
-        public IActionResult GetProduct([FromBody]int id)
+        public IActionResult GetProduct([FromHeader] int id)
         {
             var res = _baseService.GetProduct(id);
             if (res.isCorrect)
@@ -52,6 +57,25 @@ namespace StroyXimTorg.Server.Controllers
             }
 
             return NotFound();
+        }
+
+        [HttpGet("Categories")]
+        public IActionResult GetCategories()
+        {
+            var res = _baseService.GetAllCategories();
+            return Ok(res);
+        }
+
+        [HttpGet("ProductCategory")]
+        public IActionResult GetProductByCategory([FromQuery] int categoryId)
+        {
+            var res = _baseService.GetProductByCategory(categoryId);
+            if (res.isCorrect)
+            {
+                return Ok(res.Value);
+            }
+
+            return BadRequest();
         }
 
     }

@@ -24,7 +24,16 @@ namespace StroyXimTorg.Server
             builder.Services.AddScoped<IBaseService, BaseService>();
             builder.Services.AddScoped<IApplicationService, ApplicationService>();
 
+            builder.Services.AddCors();
+
             var app = builder.Build();
+
+            app.UseCors(options =>
+            {
+                options.WithOrigins("https://localhost:5173/plasticizer")
+                    .AllowAnyHeader()
+                    .AllowAnyOrigin();
+            });
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -39,7 +48,6 @@ namespace StroyXimTorg.Server
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

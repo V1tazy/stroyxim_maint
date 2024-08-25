@@ -6,30 +6,6 @@ import 'swiper/css/pagination'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 function Products() {
-    const SERVER_URL = 'http://localhost:3000/products'
-    const [products, setProducts] = useState([])
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(SERVER_URL)
-                if (!response.ok) {
-                    throw new Error(`Ошибка HTTP: ${response.status}`)
-                }
-                const data = await response.json()
-
-                if (Array.isArray(data)) {
-                    setProducts(data)
-                } else {
-                    console.error('Неправильный формат данных:', data)
-                }
-            } catch (error) {
-                console.error('Ошибка при загрузке данных:', error)
-            }
-        }
-
-        fetchData()
-    }, [])
 
     return (
         <section id='products' name='products' className='products__wrapper'>
