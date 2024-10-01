@@ -34,7 +34,7 @@ namespace StroyXimTorg.Server
 
             app.UseCors(options =>
             {
-                options.WithOrigins("https://localhost:5173/")
+                options.WithOrigins("https://0.0.0.0:5173/")
                     .AllowAnyHeader()
                     .AllowAnyOrigin();
             });
