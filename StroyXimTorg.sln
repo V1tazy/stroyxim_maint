@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StroyXimTorg.Server", "StroyXimTorg.Server\StroyXimTorg.Server.csproj", "{0C3796EE-5EE3-4A74-BD8B-68D16D933145}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "server", "StroyXimTorg.Server\server.csproj", "{0C3796EE-5EE3-4A74-BD8B-68D16D933145}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "stroyximtorg.client", "stroyximtorg.client\stroyximtorg.client.esproj", "{AACB6510-5647-465F-9BEE-080DB179583E}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "client", "stroyximtorg.client\client.esproj", "{AACB6510-5647-465F-9BEE-080DB179583E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\stroyximtorg.client\stroyximtorg.client.esproj">
+    <ProjectReference Include="..\stroyximtorg.client\client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
