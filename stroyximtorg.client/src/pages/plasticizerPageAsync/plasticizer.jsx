@@ -49,7 +49,7 @@ const SupplementsPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://0.0.0.0:5000/ProductCategory?categoryId=2');
+                const response = await fetch('http://31.172.66.183:5000/ProductCategory?categoryId=2');
                 if (!response.ok) {
                     throw new Error(`Ошибка HTTP: ${response.status}`);
                 }
