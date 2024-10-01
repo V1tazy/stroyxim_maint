@@ -11,7 +11,6 @@ const ContactForm = () => {
     });
 
     useEffect(() => {
-        // Проверяем, есть ли куки, предотвращающий повторную отправку
         const hasSubmitted = document.cookie.split('; ').find(row => row.startsWith('formSubmitted='));
         if (hasSubmitted) {
             setIsSubmitted(true);
@@ -19,15 +18,19 @@ const ContactForm = () => {
     }, []);
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Предотвращаем перезагрузку страницы
+        e.preventDefault();
 
-        // Если форма уже была отправлена, выходим
         if (isSubmitted) {
             return;
         }
 
+        if (!/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(formData.tel)) {
+            alert('Пожалуйста, введите корректный номер телефона.');
+            return;
+        }
+
         try {
-            const response = await fetch('https://localhost:7109/application', {
+            const response = await fetch('http://localhost:5000/application', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,21 +39,17 @@ const ContactForm = () => {
             });
 
             if (response.ok) {
-                setIsSubmitted(true); // Устанавливаем состояние в "отправлено"
+                setIsSubmitted(true);
 
-                // Устанавливаем куки на 24 часа
                 const now = new Date();
                 now.setTime(now.getTime() + 24 * 60 * 60 * 1000);
                 document.cookie = `formSubmitted=true; expires=${now.toUTCString()}; path=/`;
 
-                // Очистить форму или выполнить другие действия при успешной отправке
             } else {
                 console.error('Ошибка при отправке формы');
-                // Здесь можно обработать ошибки, если запрос не был успешным
             }
         } catch (error) {
             console.error('Ошибка сети:', error);
-            // Здесь можно обработать ошибки, связанные с сетью
         }
     };
 
@@ -63,40 +62,59 @@ const ContactForm = () => {
     };
 
     useEffect(() => {
-        const input_tel = document.querySelector('#tel');
-        input_tel.addEventListener('input', mask, false);
-        input_tel.addEventListener('focus', mask, false);
-        input_tel.addEventListener('blur', mask, false);
+        const inputTel = document.querySelector('#tel');
 
-        function setCursorPosition(pos, elem) {
-            elem.focus();
-            if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
-            else if (elem.createTextRange) {
-                var range = elem.createTextRange();
-                range.collapse(true);
-                range.moveEnd('character', pos);
-                range.moveStart('character', pos);
-                range.select();
+        const setCursorPosition = (pos, elem) => {
+            if (elem === document.activeElement) {
+                elem.focus();
+                if (elem.setSelectionRange) {
+                    elem.setSelectionRange(pos, pos);
+                } else if (elem.createTextRange) {
+                    const range = elem.createTextRange();
+                    range.collapse(true);
+                    range.moveEnd('character', pos);
+                    range.moveStart('character', pos);
+                    range.select();
+                }
             }
         }
 
-        function mask(event) {
+        const mask = (event) => {
             let matrix = '+7 (___) ___-__-__',
                 i = 0,
                 def = matrix.replace(/\D/g, ''),
-                val = this.value.replace(/\D/g, '');
+                val = inputTel.value.replace(/\D/g, '');
+
             if (def.length >= val.length) val = def;
-            this.value = matrix.replace(/./g, function (a) {
+            inputTel.value = matrix.replace(/./g, function (a) {
                 return /[_\d]/.test(a) && i < val.length
                     ? val.charAt(i++)
                     : i >= val.length
                         ? ''
                         : a;
             });
-            if (event.type == 'blur') {
-                if (this.value.length == 2) this.value = '';
-            } else setCursorPosition(this.value.length, this);
+
+            if (event.type === 'blur' && inputTel.value.length < 18) {
+                inputTel.value = '';
+            } else {
+                setCursorPosition(inputTel.value.length, inputTel);
+            }
+
+            setFormData(prevState => ({
+                ...prevState,
+                tel: inputTel.value
+            }));
         }
+
+        inputTel.addEventListener('input', mask);
+        inputTel.addEventListener('focus', mask);
+        inputTel.addEventListener('blur', mask);
+
+        return () => {
+            inputTel.removeEventListener('input', mask);
+            inputTel.removeEventListener('focus', mask);
+            inputTel.removeEventListener('blur', mask);
+        };
     }, []);
 
     return (

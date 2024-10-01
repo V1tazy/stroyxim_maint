@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using StroyXimTorg.Server.DataBase;
 using StroyXimTorg.Server.Models;
 using StroyXimTorg.Server.Services.Interfaces;
+using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace StroyXimTorg.Server.Controllers
@@ -24,18 +25,39 @@ namespace StroyXimTorg.Server.Controllers
         [HttpPost("application")]
         public async Task<IActionResult> CreateApplication([FromBody] ApplicationInput applicationInput)
         {
-
-            await _applicationService.SendApplicationToTelegramAsync(new()
+            if (HttpContext.Session.Get("application") == null)
             {
-                PhoneNumber = applicationInput.Tel,
-                Name = applicationInput.Name
-            });
 
-            await _applicationService.SendApplicationToEmailAsync(new()
-            {
-                PhoneNumber = applicationInput.Tel,
-                Name = applicationInput.Name
-            });
+                if (string.IsNullOrWhiteSpace(applicationInput.Name) || applicationInput.Name.Length > 100)
+                {
+                    return BadRequest("Имя не может быть пустым или слишком длинным.");
+                }
+
+                if (applicationInput.Message.Length > 400)
+                {
+                    return BadRequest("Слишком длинное сообщение.");
+                }
+
+                var phoneNumberPattern = @"^(\+7|7|8)?\s?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$";
+                if (!Regex.IsMatch(applicationInput.Tel, phoneNumberPattern))
+                {
+                    return BadRequest("Пожалуйста, введите корректный номер телефона.");
+                }
+
+                //await _applicationService.SendApplicationToTelegramAsync(new()
+                //{
+                //    PhoneNumber = applicationInput.Tel,
+                //    Name = applicationInput.Name
+                //});
+
+                await _applicationService.SendApplicationToEmailAsync(new()
+                {
+                    PhoneNumber = applicationInput.Tel,
+                    Name = applicationInput.Name
+                });
+
+                HttpContext.Session.Set("application", new byte[] { });
+            }
 
             return Ok();
         }

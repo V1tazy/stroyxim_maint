@@ -44,7 +44,7 @@ const SupplementsPage = () => {
     };
   }, [isButtonClicked, isFormVisible]);
 
-    const SERVER_URL = 'https://localhost:7109/ProductCategory?categoryId=1'
+    const SERVER_URL = 'http://localhost:5000/ProductCategory?categoryId=1'
     const [products, setProducts] = useState([])
 
     useEffect(() => {

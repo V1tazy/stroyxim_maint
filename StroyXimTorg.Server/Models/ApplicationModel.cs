@@ -11,6 +11,7 @@ public class ApplicationModel
     {
         return "Новая заявка!\n" +
                $"От: {Name}\n" +
-               $"Номер телефона: {PhoneNumber}\n";
+               $"Номер телефона: {PhoneNumber}\n" +
+               $"Дополнительно: {Description}"; 
     }
 }

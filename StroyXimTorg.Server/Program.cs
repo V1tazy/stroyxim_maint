@@ -19,21 +19,27 @@ namespace StroyXimTorg.Server
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlite("Data Source =" + builder.Environment.ContentRootPath + "DataBase/base_db");
+                var dbPath = Path.Combine(builder.Environment.ContentRootPath, "base_db");
+                options.UseSqlite($"Data Source={dbPath}");
             });
             builder.Services.AddScoped<IBaseService, BaseService>();
             builder.Services.AddScoped<IApplicationService, ApplicationService>();
-
             builder.Services.AddCors();
+            builder.Services.AddSession();
+            builder.Services.AddDistributedMemoryCache();
+
+
 
             var app = builder.Build();
 
             app.UseCors(options =>
             {
-                options.WithOrigins("https://localhost:5173/plasticizer")
+                options.WithOrigins("https://localhost:5173/")
                     .AllowAnyHeader()
                     .AllowAnyOrigin();
             });
+
+            app.UseSession();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
