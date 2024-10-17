@@ -8,8 +8,7 @@ function Main() {
       <div className="container main__wrapper">
         <div className="main__text">
           <p className="main__primary-text">
-            Продажа всего <br /> для бетона и<br />
-            растворов
+            Все для бетона
           </p>
           <p className="main__sub-text">
             Поставляем <br />высококачественный

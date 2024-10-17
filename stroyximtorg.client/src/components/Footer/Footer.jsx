@@ -11,7 +11,6 @@ function Footer() {
 				<div className='footer__wrapper--contacts'>
 					<div>
 						<p className='footer__wrapper--contacts--link contacts__label'>
-							Почта:
 						</p>
 						<a
 							href='mailto:stroihimchita@mail.ru'
@@ -19,13 +18,12 @@ function Footer() {
 						>
 							stroihimchita@mail.ru
 						</a>
-						<p className='footer__wrapper--contacts--link'>Адрес:</p>
 						<p className='footer__wrapper--contacts--link'>
 							г. Чита, Романовский тракт, 61а, склад № 3
 						</p>
 					</div>
 					<div className='footer__wrapper--contacts--link'>
-						<p className='contacts__label'>Номер</p>
+						<p className='contacts__label'></p>
 						<a className='action--link' href='tel:+73022714848'>+7 (3022) 71-48-48</a>
 						<a className='action--link' href='tel:+79242750898'>+7 (924) 275-08-98</a>
 					</div>
