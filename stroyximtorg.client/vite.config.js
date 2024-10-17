@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite';
 import plugin from '@vitejs/plugin-react';
 
-// Определение хоста и порта сервера
-const serverHost = 'http://localhost'; // Имя контейнера сервера
-const serverPort = 8080; // Порт, на котором работает сервер
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+const serverHost = 'http://localhost'; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+const serverPort = 8080; // пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 export default defineConfig({
     plugins: [plugin()],
@@ -22,6 +22,6 @@ export default defineConfig({
             }
         },
         port: 5173,
-        https: false // Если не требуется HTTPS
+        https: true // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ HTTPS
     }
 });
