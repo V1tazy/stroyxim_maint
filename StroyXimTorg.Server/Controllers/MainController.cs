@@ -44,11 +44,12 @@ namespace StroyXimTorg.Server.Controllers
                     return BadRequest("Пожалуйста, введите корректный номер телефона.");
                 }
 
-                //await _applicationService.SendApplicationToTelegramAsync(new()
-                //{
-                //    PhoneNumber = applicationInput.Tel,
-                //    Name = applicationInput.Name
-                //});
+                await _applicationService.SendApplicationToTelegramAsync(new()
+                {
+                    PhoneNumber = applicationInput.Tel,
+                    Name = applicationInput.Name
+                });
+
 
                 await _applicationService.SendApplicationToEmailAsync(new()
                 {
